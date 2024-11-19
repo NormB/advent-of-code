@@ -1,10 +1,14 @@
 advent_of_code::solution!(1);
 
 pub fn part_one(input: &str) -> Option<u32> {
+    let mut _sum = 0;
+    for line in input.lines() {
+        println!("{}", line);
+    }
     None
 }
 
-pub fn part_two(input: &str) -> Option<u32> {
+pub fn part_two(_input: &str) -> Option<u32> {
     None
 }
 
