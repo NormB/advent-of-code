@@ -23,8 +23,30 @@ pub fn part_one(input: &str) -> Option<u32> {
     Some(total)
 }
 
-pub fn part_two(_input: &str) -> Option<u32> {
-    None
+pub fn part_two(input: &str) -> Option<u32> {
+    let mut total = 0;
+    for line in input.lines() {
+        // take line in the format of lxwxh and split it into a vector of u32
+        let mut numbers: Vec<u32> = line
+            .split('x')
+            .map(|x| x.parse::<u32>().unwrap())
+            .collect();
+
+        // sort the numbers without having to clone the vector
+        numbers.sort();
+
+        // sort the numbers so that the smallest two are first
+        //let mut sorted = numbers.clone();
+        //sorted.sort();
+
+        // calculate the volume of the box
+        let volume = numbers.iter().product::<u32>();
+
+        // calculate the total length of ribbon needed
+        total += 2 * numbers[0] + 2 * numbers[1] + volume;
+    }
+    println!("Total: {}", total);
+    Some(total)
 }
 
 #[cfg(test)]
